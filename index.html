@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium glasses shop offering stylish, affordable, and durable eyewear. Find the perfect glasses, sunglasses, and optical products.">
+    <meta name="keywords" content="glasses, eyewear, sunglasses, optical, prescription glasses, designer frames, affordable glasses">
+    <title>VisionCraft Premium Eyewear | Stylish & Affordable Glasses</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f8fafc;
+        }
+        
+        .heading-font {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .gradient-border {
+            border: double 3px transparent;
+            border-radius: 12px;
+            background-image: linear-gradient(#0f172a, #0f172a), 
+                              linear-gradient(to right, #6366f1, #8b5cf6);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+        }
+        
+        .glass-effect {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn-glow {
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+        }
+        
+        .btn-glow:hover {
+            box-shadow: 0 0 25px rgba(99, 102, 241, 0.8);
+            transform: translateY(-2px);
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s;
+        }
+        
+        .testimonial-card:hover {
+            transform: scale(1.02);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1574258495973-f010dfbb5371?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Improved Mobile Menu Styles */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            box-shadow: 5px 0 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .menu-overlay {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+        
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .menu-item {
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+        
+        .menu-item:hover {
+            border-left-color: #6366f1;
+            background: rgba(99, 102, 241, 0.1);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        /* Cart Notification */
+        .cart-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transform: translateX(150%);
+            transition: transform 0.4s ease;
+        }
+        
+        .cart-notification.active {
+            transform: translateX(0);
+        }
+        
+        /* Search Modal */
+        .search-modal {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+        }
+        
+        .search-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Order Modal */
+        .order-modal {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+        }
+        
+        .order-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #6366f1, #8b5cf6);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #8b5cf6, #6366f1);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- ===== NAVIGATION SECTION ===== -->
+    <header class="sticky top-0 z-50 glass-effect shadow-lg">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2" id="logo-link">
+                <div class="w-10 h-10 rounded-full bg-indigo-500 flex items-center justify-center">
+                    <i class="fas fa-glasses text-white text-xl"></i>
+                </div>
+                <span class="text-2xl font-bold heading-font">Vision<span class="text-indigo-400">Craft</span></span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-slate-200 hover:text-indigo-300 font-medium transition-colors">Home</a>
+                <a href="#products" class="text-slate-200 hover:text-indigo-300 font-medium transition-colors">Products</a>
+                <a href="#about" class="text-slate-200 hover:text-indigo-300 font-medium transition-colors">About Us</a>
+                <a href="#testimonials" class="text-slate-200 hover:text-indigo-300 font-medium transition-colors">Testimonials</a>
+                <a href="#contact" class="text-slate-200 hover:text-indigo-300 font-medium transition-colors">Contact</a>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <button id="search-btn" class="text-slate-200 hover:text-indigo-300">
+                    <i class="fas fa-search text-xl"></i>
+                </button>
+                <button id="cart-btn" class="text-slate-200 hover:text-indigo-300 relative">
+                    <i class="fas fa-shopping-cart text-xl"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-indigo-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                </button>
+                <a href="#contact" class="hidden md:block bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-4 py-2 rounded-full btn-glow font-medium">
+                    Book Eye Test
+                </a>
+                <button id="menu-toggle" class="md:hidden text-slate-200">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu fixed inset-y-0 left-0 w-64 p-6 z-50">
+            <div class="flex justify-between items-center mb-10">
+                <a href="#" class="flex items-center space-x-2" id="mobile-logo-link">
+                    <div class="w-10 h-10 rounded-full bg-indigo-500 flex items-center justify-center">
+                        <i class="fas fa-glasses text-white text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold heading-font">Vision<span class="text-indigo-400">Craft</span></span>
+                </a>
+                <button id="close-menu" class="text-slate-200 bg-indigo-600 p-1 rounded-full">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+            
+            <div class="flex flex-col space-y-2">
+                <a href="#" class="menu-item text-slate-200 hover:text-indigo-300 font-medium py-3 px-4 rounded-lg flex items-center">
+                    <i class="fas fa-home mr-3 text-indigo-400"></i> Home
+                </a>
+                <a href="#products" class="menu-item text-slate-200 hover:text-indigo-300 font-medium py-3 px-4 rounded-lg flex items-center">
+                    <i class="fas fa-glasses mr-3 text-indigo-400"></i> Products
+                </a>
+                <a href="#about" class="menu-item text-slate-200 hover:text-indigo-300 font-medium py-3 px-4 rounded-lg flex items-center">
+                    <i class="fas fa-store mr-3 text-indigo-400"></i> About Us
+                </a>
+                <a href="#testimonials" class="menu-item text-slate-200 hover:text-indigo-300 font-medium py-3 px-4 rounded-lg flex items-center">
+                    <i class="fas fa-star mr-3 text-indigo-400"></i> Testimonials
+                </a>
+                <a href="#contact" class="menu-item text-slate-200 hover:text-indigo-300 font-medium py-3 px-4 rounded-lg flex items-center">
+                    <i class="fas fa-phone mr-3 text-indigo-400"></i> Contact
+                </a>
+                
+                <div class="pt-6 border-t border-slate-700 mt-4">
+                    <button id="mobile-search-btn" class="menu-item text-slate-200 hover:text-indigo-300 py-3 px-4 rounded-lg flex items-center mb-2 w-full">
+                        <i class="fas fa-search mr-3 text-indigo-400"></i> Search
+                    </button>
+                    <button id="mobile-cart-btn" class="menu-item text-slate-200 hover:text-indigo-300 py-3 px-4 rounded-lg flex items-center mb-4 w-full">
+                        <i class="fas fa-shopping-cart mr-3 text-indigo-400"></i> Cart (<span id="mobile-cart-count">0</span>)
+                    </button>
+                    <a href="#contact" class="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-4 py-3 rounded-full btn-glow font-medium text-center block">
+                        Book Eye Test
+                    </a>
+                </div>
+            </div>
+            
+            <div class="absolute bottom-6 left-6 right-6">
+                <div class="flex justify-center space-x-4">
+                    <a href="#" class="text-slate-400 hover:text-indigo-400"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-indigo-400"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-indigo-400"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-indigo-400"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Menu Overlay -->
+        <div id="menu-overlay" class="menu-overlay fixed inset-0 z-40"></div>
+    </header>
+
+    <!-- ===== CART NOTIFICATION ===== -->
+    <div id="cart-notification" class="cart-notification">
+        <i class="fas fa-check-circle mr-2"></i> <span id="notification-text">Product added to cart!</span>
+    </div>
+
+    <!-- ===== SEARCH MODAL ===== -->
+    <div id="search-modal" class="search-modal fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="glass-effect rounded-xl p-8 w-full max-w-1xl">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-semibold text-slate-100">Search Products</h3>
+                <button id="close-search" class="text-slate-200 bg-indigo-600 p-1 rounded-full">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+            <div class="relative">
+                <input type="text" id="search-input" placeholder="Search for glasses, sunglasses, frames..." class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <button class="absolute right-2 top-2 bg-indigo-500 text-white p-2 rounded-lg">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div id="search-results" class="mt-6 max-h-80 overflow-y-auto hidden">
+                <h4 class="text-lg font-medium text-slate-100 mb-4">Search Results</h4>
+                <div class="space-y-4">
+                    <!-- Search results will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ORDER MODAL ===== -->
+    <div id="order-modal" class="order-modal fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="glass-effect rounded-xl p-8 w-full max-w-2xl">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-semibold text-slate-100">Complete Your Order</h3>
+                <button id="close-order" class="text-slate-200 bg-indigo-600 p-1 rounded-full">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+            <form id="order-form">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label for="order-name" class="block text-slate-300 mb-2">Full Name</label>
+                        <input type="text" id="order-name" class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    </div>
+                    <div>
+                        <label for="order-email" class="block text-slate-300 mb-2">Email Address</label>
+                        <input type="email" id="order-email" class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label for="order-phone" class="block text-slate-300 mb-2">Phone Number</label>
+                        <input type="tel" id="order-phone" class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    </div>
+                    <div>
+                        <label for="order-address" class="block text-slate-300 mb-2">Delivery Address</label>
+                        <input type="text" id="order-address" class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label for="order-notes" class="block text-slate-300 mb-2">Order Notes (Optional)</label>
+                    <textarea id="order-notes" rows="3" class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                </div>
+                <div class="bg-slate-800 rounded-lg p-4 mb-6">
+                    <h4 class="text-lg font-medium text-slate-100 mb-2">Order Summary</h4>
+                    <div id="order-summary" class="text-slate-300">
+                        <!-- Order summary will be dynamically added here -->
+                    </div>
+                    <div class="flex justify-between items-center mt-4 pt-4 border-t border-slate-700">
+                        <span class="text-lg font-semibold text-slate-100">Total:</span>
+                        <span id="order-total" class="text-xl font-bold text-indigo-300">$0.00</span>
+                    </div>
+                </div>
+                <button type="submit" class="bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold px-6 py-3 rounded-lg btn-glow w-full">
+                    Confirm Order <i class="fas fa-check ml-2"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <!-- ===== HERO SECTION ===== -->
+        <section class="hero-section py-20 md:py-32 text-white">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 heading-font">See the World Clearly with Our Premium Glasses</h1>
+                <p class="text-xl md:text-2xl mb-10 max-w-2xl mx-auto">Discover stylish, affordable, and durable eyewear that enhances your vision and complements your style</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#products" class="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white font-semibold px-8 py-4 rounded-full text-lg btn-glow inline-block">
+                        Shop Now <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#contact" class="bg-transparent hover:bg-slate-800 text-white font-semibold px-8 py-4 rounded-full text-lg border-2 border-indigo-500 inline-block">
+                        Visit Store <i class="fas fa-map-marker-alt ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PRODUCTS SECTION ===== -->
+        <section id="products" class="py-16">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-14">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-100 mb-4 heading-font">Our Featured Products</h2>
+                    <p class="text-slate-400 max-w-2xl mx-auto">Discover our latest collection of designer frames and high-performance lenses</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Product 1 -->
+                    <div class="product-card glass-effect gradient-border p-1 rounded-xl">
+                        <div class="h-64 overflow-hidden rounded-t-xl">
+                            <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Classic black frame glasses" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-slate-100 mb-2">Classic Black Frames</h3>
+                            <p class="text-slate-400 mb-4">Premium acetate frames with anti-reflective lenses</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-indigo-300">$149.99</span>
+                                <div class="flex space-x-2">
+                                    <button class="add-to-cart bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-3 py-2 rounded-full btn-glow" data-id="1" data-name="Classic Black Frames" data-price="149.99">
+                                        <i class="fas fa-cart-plus"></i>
+                                    </button>
+                                    <button class="buy-now bg-gradient-to-r from-green-500 to-emerald-500 text-white px-3 py-2 rounded-full btn-glow" data-id="1" data-name="Classic Black Frames" data-price="149.99">
+                                        <i class="fas fa-bolt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="product-card glass-effect gradient-border p-1 rounded-xl">
+                        <div class="h-64 overflow-hidden rounded-t-xl">
+                            <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Modern blue light blocking glasses" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-slate-100 mb-2">Blue Light Glasses</h3>
+                            <p class="text-slate-400 mb-4">Perfect for digital device users with style</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-indigo-300">$129.99</span>
+                                <div class="flex space-x-2">
+                                    <button class="add-to-cart bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-3 py-2 rounded-full btn-glow" data-id="2" data-name="Blue Light Glasses" data-price="129.99">
+                                        <i class="fas fa-cart-plus"></i>
+                                    </button>
+                                    <button class="buy-now bg-gradient-to-r from-green-500 to-emerald-500 text-white px-3 py-2 rounded-full btn-glow" data-id="2" data-name="Blue Light Glasses" data-price="129.99">
+                                        <i class="fas fa-bolt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="product-card glass-effect gradient-border p-1 rounded-xl">
+                        <div class="h-64 overflow-hidden rounded-t-xl">
+                            <img src="https://images.unsplash.com/photo-1591073113125-e46713c829ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Luxury gold metal frame glasses" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-slate-100 mb-2">Gold Metal Frames</h3>
+                            <p class="text-slate-400 mb-4">Luxury metal frames with premium hinge design</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-indigo-300">$189.99</span>
+                                <div class="flex space-x-2">
+                                    <button class="add-to-cart bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-3 py-2 rounded-full btn-glow" data-id="3" data-name="Gold Metal Frames" data-price="189.99">
+                                        <i class="fas fa-cart-plus"></i>
+                                    </button>
+                                    <button class="buy-now bg-gradient-to-r from-green-500 to-emerald-500 text-white px-3 py-2 rounded-full btn-glow" data-id="3" data-name="Gold Metal Frames" data-price="189.99">
+                                        <i class="fas fa-bolt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="product-card glass-effect gradient-border p-1 rounded-xl">
+                        <div class="h-64 overflow-hidden rounded-t-xl">
+                            <img src="https://images.unsplash.com/photo-1581338834647-b0fb40704e21?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Sporty wraparound sunglasses" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-slate-100 mb-2">Sport Sunglasses</h3>
+                            <p class="text-slate-400 mb-4">Polarized lenses with maximum protection and comfort</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-indigo-300">$159.99</span>
+                                <div class="flex space-x-2">
+                                    <button class="add-to-cart bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-3 py-2 rounded-full btn-glow" data-id="4" data-name="Sport Sunglasses" data-price="159.99">
+                                        <i class="fas fa-cart-plus"></i>
+                                    </button>
+                                    <button class="buy-now bg-gradient-to-r from-green-500 to-emerald-500 text-white px-3 py-2 rounded-full btn-glow" data-id="4" data-name="Sport Sunglasses" data-price="159.99">
+                                        <i class="fas fa-bolt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class="product-card glass-effect gradient-border p-1 rounded-xl">
+                        <div class="h-64 overflow-hidden rounded-t-xl">
+                            <img src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Aviator style sunglasses" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-slate-100 mb-2">Aviator Sunglasses</h3>
+                            <p class="text-slate-400 mb-4">Classic aviator style with modern UV protection</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-indigo-300">$139.99</span>
+                                <div class="flex space-x-2">
+                                    <button class="add-to-cart bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-3 py-2 rounded-full btn-glow" data-id="5" data-name="Aviator Sunglasses" data-price="139.99">
+                                        <i class="fas fa-cart-plus"></i>
+                                    </button>
+                                    <button class="buy-now bg-gradient-to-r from-green-500 to-emerald-500 text-white px-3 py-2 rounded-full btn-glow" data-id="5" data-name="Aviator Sunglasses" data-price="139.99">
+                                        <i class="fas fa-bolt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 6 -->
+                    <div class="product-card glass-effect gradient-border p-1 rounded-xl">
+                        <div class="h-64 overflow-hidden rounded-t-xl">
+                            <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Designer cat-eye glasses" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-slate-100 mb-2">Designer Cat-Eye Frames</h3>
+                            <p class="text-slate-400 mb-4">Elegant cat-eye design for a sophisticated look</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-indigo-300">$179.99</span>
+                                <div class="flex space-x-2">
+                                    <button class="add-to-cart bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-3 py-2 rounded-full btn-glow" data-id="6" data-name="Designer Cat-Eye Frames" data-price="179.99">
+                                        <i class="fas fa-cart-plus"></i>
+                                    </button>
+                                    <button class="buy-now bg-gradient-to-r from-green-500 to-emerald-500 text-white px-3 py-2 rounded-full btn-glow" data-id="6" data-name="Designer Cat-Eye Frames" data-price="179.99">
+                                        <i class="fas fa-bolt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <a href="#" class="inline-block bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold px-8 py-3 rounded-full btn-glow">
+                        View All Collections <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ABOUT US SECTION ===== -->
+        <section id="about" class="py-16">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-10 md:mb-0 animate-float">
+                        <div class="gradient-border p-1 rounded-xl">
+                            <img src="https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="VisionCraft glasses store interior" class="rounded-xl w-full">
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 md:pl-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-slate-100 mb-6 heading-font">About Vision<span class="text-indigo-400">Craft</span></h2>
+                        <p class="text-slate-400 mb-4">Founded in 2010, VisionCraft has been providing premium eyewear solutions to our community for over a decade. Our experienced opticians are dedicated to helping you find the perfect frames for your style and vision needs.</p>
+                        <p class="text-slate-400 mb-8">We offer a wide selection of designer frames, prescription lenses, sunglasses, and specialized eyewear. Our state-of-the-art lab ensures precise lens customization with quick turnaround times.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="text-center">
+                                <div class="feature-icon">
+                                    <i class="fas fa-tag text-white text-2xl"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold text-slate-100 mb-2">Affordable</h3>
+                                <p class="text-slate-400">Quality eyewear at competitive prices</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="feature-icon">
+                                    <i class="fas fa-star text-white text-2xl"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold text-slate-100 mb-2">Stylish</h3>
+                                <p class="text-slate-400">Trending designs from top brands</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="feature-icon">
+                                    <i class="fas fa-shield-alt text-white text-2xl"></i>
+                                </div>
+                                <h3 class="text-lg font-semibold text-slate-100 mb-2">Durable</h3>
+                                <p class="text-slate-400">Built to last with premium materials</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TESTIMONIALS SECTION ===== -->
+        <section id="testimonials" class="py-16">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-14">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-100 mb-4 heading-font">Customer Reviews</h2>
+                    <p class="text-slate-400 max-w-2xl mx-auto">Hear what our customers have to say about their experience with us</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card glass-effect gradient-border p-1 rounded-xl">
+                        <div class="bg-slate-800 bg-opacity-50 rounded-xl p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="text-slate-300 mb-4">"I've been getting my glasses from VisionCraft for years. Their service is exceptional, and they always have the latest styles. Highly recommend!"</p>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-slate-700 mr-4 overflow-hidden">
+                                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sarah Johnson">
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-100">Sarah Johnson</h4>
+                                    <p class="text-slate-400">Regular Customer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card glass-effect gradient-border p-1 rounded-xl">
+                        <div class="bg-slate-800 bg-opacity-50 rounded-xl p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="text-slate-300 mb-4">"The eye test was thorough, and the optician helped me choose frames that perfectly suit my face. Best optical shop in town!"</p>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-slate-700 mr-4 overflow-hidden">
+                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-100">Michael Chen</h4>
+                                    <p class="text-slate-400">First-time Customer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card glass-effect gradient-border p-1 rounded-xl">
+                        <div class="bg-slate-800 bg-opacity-50 rounded-xl p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                            <p class="text-slate-300 mb-4">"I purchased prescription sunglasses from VisionCraft, and I'm extremely happy with the quality. The polarization is perfect for driving."</p>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-slate-700 mr-4 overflow-hidden">
+                                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Emily Rodriguez">
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-100">Emily Rodriguez</h4>
+                                    <p class="text-slate-400">Sunglasses Customer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT SECTION ===== -->
+        <section id="contact" class="py-16">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-14">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-100 mb-4 heading-font">Visit Our Store</h2>
+                    <p class="text-slate-400 max-w-2xl mx-auto">We're here to help you find the perfect eyewear solution</p>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="md:w-1/2">
+                        <div class="glass-effect rounded-xl p-8 h-full">
+                            <h3 class="text-2xl font-semibold text-slate-100 mb-6">Get In Touch</h3>
+                            <div class="mb-6">
+                                <h4 class="text-lg font-medium text-slate-100 mb-2"><i class="fas fa-map-marker-alt text-indigo-400 mr-2"></i> Address</h4>
+                                <p class="text-slate-400">123 Optical Avenue, Vision City, VC 10001</p>
+                            </div>
+                            <div class="mb-6">
+                                <h4 class="text-lg font-medium text-slate-100 mb-2"><i class="fas fa-phone text-indigo-400 mr-2"></i> Phone</h4>
+                                <p class="text-slate-400"><a href="tel:+12125551234" class="hover:text-indigo-300">+1 (212) 555-1234</a></p>
+                            </div>
+                            <div class="mb-6">
+                                <h4 class="text-lg font-medium text-slate-100 mb-2"><i class="fas fa-envelope text-indigo-400 mr-2"></i> Email</h4>
+                                <p class="text-slate-400"><a href="mailto:info@visioncraft.com" class="hover:text-indigo-300">info@visioncraft.com</a></p>
+                            </div>
+                            <div class="mb-6">
+                                <h4 class="text-lg font-medium text-slate-100 mb-2"><i class="fas fa-clock text-indigo-400 mr-2"></i> Business Hours</h4>
+                                <p class="text-slate-400">Monday-Friday: 10AM-8PM</p>
+                                <p class="text-slate-400">Saturday: 10AM-6PM</p>
+                                <p class="text-slate-400">Sunday: 11AM-5PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:w-1/2">
+                        <div class="glass-effect rounded-xl p-8 h-full">
+                            <h3 class="text-2xl font-semibold text-slate-100 mb-6">Send Us a Message</h3>
+                            <form id="contact-form">
+                                <div class="mb-4">
+                                    <label for="name" class="block text-slate-300 mb-2">Full Name</label>
+                                    <input type="text" id="name" class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="email" class="block text-slate-300 mb-2">Email Address</label>
+                                    <input type="email" id="email" class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="message" class="block text-slate-300 mb-2">Message</label>
+                                    <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                                </div>
+                                <button type="submit" class="bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold px-6 py-3 rounded-lg btn-glow w-full">
+                                    Send Message <i class="fas fa-paper-plane ml-2"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Map Section -->
+                <div class="mt-12 glass-effect rounded-xl p-1 gradient-border">
+                    <div class="h-96 w-full bg-slate-800 rounded-xl overflow-hidden">
+                        <!-- Google Map Embed -->
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-73.96697778459418!3d40.78286467932562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2589a018531e3%3A0xb9df1f7387a94119!2sMadison%20Ave%2C%20New%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1645491665727!5m2!1sen!2s"
+                            class="w-full h-full border-0"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER SECTION ===== -->
+    <footer class="bg-slate-900 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-6 heading-font">Vision<span class="text-indigo-400">Craft</span></h3>
+                    <p class="text-slate-400 mb-4">Premium optical shop offering designer eyewear, prescription glasses, and sunglasses.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-slate-400 hover:text-indigo-400"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-indigo-400"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-indigo-400"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-indigo-400"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-slate-200 mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-slate-400 hover:text-indigo-400">Home</a></li>
+                        <li><a href="#products" class="text-slate-400 hover:text-indigo-400">Products</a></li>
+                        <li><a href="#about" class="text-slate-400 hover:text-indigo-400">About Us</a></li>
+                        <li><a href="#testimonials" class="text-slate-400 hover:text-indigo-400">Testimonials</a></li>
+                        <li><a href="#contact" class="text-slate-400 hover:text-indigo-400">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-slate-200 mb-6">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-slate-400 hover:text-indigo-400">Eye Examination</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-indigo-400">Prescription Glasses</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-indigo-400">Sunglasses</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-indigo-400">Contact Lenses</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-indigo-400">Frame Repair</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-slate-200 mb-6">Newsletter</h4>
+                    <p class="text-slate-400 mb-4">Subscribe to get updates on new collections and exclusive offers.</p>
+                    <form>
+                        <div class="flex">
+                            <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg w-full bg-slate-800 text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <button type="submit" class="bg-indigo-500 px-4 py-2 rounded-r-lg hover:bg-indigo-600">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 mt-12 pt-8 text-center text-slate-400">
+                <p>&copy; 2023 VisionCraft. All rights reserved. Premium eyewear for everyone.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== CART FUNCTIONALITY =====
+        let cart = [];
+        let currentOrder = null;
+
+        // Function to update cart count
+        function updateCartCount() {
+            const cartCount = document.getElementById('cart-count');
+            const mobileCartCount = document.getElementById('mobile-cart-count');
+            
+            if (cart.length > 0) {
+                cartCount.textContent = cart.length;
+                cartCount.classList.remove('hidden');
+                mobileCartCount.textContent = cart.length;
+            } else {
+                cartCount.classList.add('hidden');
+                mobileCartCount.textContent = '0';
+            }
+        }
+
+        // Function to show cart notification
+        function showCartNotification(message) {
+            const notification = document.getElementById('cart-notification');
+            const notificationText = document.getElementById('notification-text');
+            
+            notificationText.textContent = message;
+            notification.classList.add('active');
+            
+            setTimeout(() => {
+                notification.classList.remove('active');
+            }, 3000);
+        }
+
+        // Function to add product to cart
+        function addToCart(productId, productName, productPrice) {
+            // Check if product is already in cart
+            const existingProduct = cart.find(item => item.id === productId);
+            
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                cart.push({
+                    id: productId,
+                    name: productName,
+                    price: parseFloat(productPrice),
+                    quantity: 1
+                });
+            }
+            
+            updateCartCount();
+            showCartNotification(`${productName} added to cart!`);
+        }
+
+        // Function to handle buy now
+        function buyNow(productId, productName, productPrice) {
+            // Clear cart and add the current product
+            cart = [{
+                id: productId,
+                name: productName,
+                price: parseFloat(productPrice),
+                quantity: 1
+            }];
+            
+            updateCartCount();
+            showOrderModal();
+        }
+
+        // Function to show order modal
+        function showOrderModal() {
+            const orderModal = document.getElementById('order-modal');
+            const orderSummary = document.getElementById('order-summary');
+            const orderTotal = document.getElementById('order-total');
+            
+            // Calculate total and build summary
+            let total = 0;
+            let summaryHTML = '';
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                summaryHTML += `
+                    <div class="flex justify-between items-center mb-2">
+                        <span>${item.name} x${item.quantity}</span>
+                        <span>$${itemTotal.toFixed(2)}</span>
+                    </div>
+                `;
+            });
+            
+            orderSummary.innerHTML = summaryHTML;
+            orderTotal.textContent = `$${total.toFixed(2)}`;
+            
+            // Show the modal
+            orderModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Function to handle order form submission
+        function handleOrderSubmission(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('order-name').value;
+            const email = document.getElementById('order-email').value;
+            
+            alert(`Thank you for your order, ${name}! A confirmation has been sent to ${email}.`);
+            
+            // Close modal and reset cart
+            closeOrderModal();
+            cart = [];
+            updateCartCount();
+        }
+
+        // Function to close order modal
+        function closeOrderModal() {
+            const orderModal = document.getElementById('order-modal');
+            orderModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // ===== SEARCH FUNCTIONALITY =====
+        function showSearchModal() {
+            const searchModal = document.getElementById('search-modal');
+            searchModal.classList.add('active');
+            document.getElementById('search-input').focus();
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSearchModal() {
+            const searchModal = document.getElementById('search-modal');
+            searchModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function performSearch() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const searchResults = document.getElementById('search-results');
+            
+            if (searchTerm.length < 2) {
+                searchResults.classList.add('hidden');
+                return;
+            }
+            
+            // Simulate search results
+            const products = [
+                { name: 'Classic Black Frames', price: '$149.99', category: 'Eyeglasses' },
+                { name: 'Blue Light Glasses', price: '$129.99', category: 'Eyeglasses' },
+                { name: 'Gold Metal Frames', price: '$189.99', category: 'Eyeglasses' },
+                { name: 'Sport Sunglasses', price: '$159.99', category: 'Sunglasses' },
+                { name: 'Aviator Sunglasses', price: '$139.99', category: 'Sunglasses' },
+                { name: 'Designer Cat-Eye Frames', price: '$179.99', category: 'Eyeglasses' }
+            ];
+            
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(searchTerm) || 
+                product.category.toLowerCase().includes(searchTerm)
+            );
+            
+            let resultsHTML = '';
+            
+            if (filteredProducts.length > 0) {
+                filteredProducts.forEach(product => {
+                    resultsHTML += `
+                        <div class="glass-effect rounded-lg p-4 flex justify-between items-center">
+                            <div>
+                                <h5 class="font-medium text-slate-100">${product.name}</h5>
+                                <p class="text-slate-400 text-sm">${product.category}</p>
+                            </div>
+                            <span class="text-indigo-300 font-semibold">${product.price}</span>
+                        </div>
+                    `;
+                });
+            } else {
+                resultsHTML = '<p class="text-slate-400 text-center py-4">No products found. Try a different search term.</p>';
+            }
+            
+            searchResults.innerHTML = resultsHTML;
+            searchResults.classList.remove('hidden');
+        }
+
+        // ===== MOBILE MENU FUNCTIONALITY =====
+        const menuToggle = document.getElementById('menu-toggle');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+        
+        // Open mobile menu
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // Close mobile menu
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        closeMenu.addEventListener('click', closeMobileMenu);
+        menuOverlay.addEventListener('click', closeMobileMenu);
+        
+        // Close menu when clicking on links
+        const mobileLinks = document.querySelectorAll('#mobile-menu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // ===== EVENT LISTENERS =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add to cart buttons
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    const name = this.getAttribute('data-name');
+                    const price = this.getAttribute('data-price');
+                    addToCart(id, name, price);
+                });
+            });
+            
+            // Buy now buttons
+            document.querySelectorAll('.buy-now').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    const name = this.getAttribute('data-name');
+                    const price = this.getAttribute('data-price');
+                    buyNow(id, name, price);
+                });
+            });
+            
+            // Search functionality
+            document.getElementById('search-btn').addEventListener('click', showSearchModal);
+            document.getElementById('mobile-search-btn').addEventListener('click', function() {
+                closeMobileMenu();
+                showSearchModal();
+            });
+            document.getElementById('close-search').addEventListener('click', closeSearchModal);
+            document.getElementById('search-input').addEventListener('input', performSearch);
+            
+            // Order functionality
+            document.getElementById('order-form').addEventListener('submit', handleOrderSubmission);
+            document.getElementById('close-order').addEventListener('click', closeOrderModal);
+            
+            // Cart button
+            document.getElementById('cart-btn').addEventListener('click', function() {
+                if (cart.length > 0) {
+                    showOrderModal();
+                } else {
+                    showCartNotification('Your cart is empty!');
+                }
+            });
+            
+            document.getElementById('mobile-cart-btn').addEventListener('click', function() {
+                closeMobileMenu();
+                if (cart.length > 0) {
+                    showOrderModal();
+                } else {
+                    showCartNotification('Your cart is empty!');
+                }
+            });
+            
+            // Logo click to go home
+            document.getElementById('logo-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            document.getElementById('mobile-logo-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                closeMobileMenu();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Form validation for contact form
+            document.getElementById('contact-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+                
+                if (!name || !email || !message) {
+                    alert('Please fill in all fields');
+                    return;
+                }
+                
+                if (!validateEmail(email)) {
+                    alert('Please enter a valid email address');
+                    return;
+                }
+                
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            });
+            
+            function validateEmail(email) {
+                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
+            }
+            
+            // Initialize cart count
+            updateCartCount();
+        });
+    </script>
+</body>
+</html>
