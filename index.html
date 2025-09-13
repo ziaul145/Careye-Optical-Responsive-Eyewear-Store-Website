@@ -95,9 +95,10 @@
       <!-- Mobile Menu -->
       <div
         id="mobile-menu"
-        class="mobile-menu fixed inset-y-0 left-0 w-64 p-6 z-50"
+        class="mobile-menu fixed inset-y-0 left-0 w-70 p-6 z-50 -mb-[570px]"
+
       >
-        <div class="flex justify-between items-center mb-10">
+        <div class="flex justify-between items-center ">
           <a href="#" class="flex items-center space-x-2" id="mobile-logo-link">
             <div
               class="w-10 h-10 rounded-full bg-indigo-500 flex items-center justify-center"
@@ -109,11 +110,12 @@
             >
           </a>
           <button
-            id="close-menu"
-            class="text-slate-200 bg-indigo-600 p-1 rounded-full"
-          >
-            <i class="fas fa-times text-lg"></i>
-          </button>
+  id="close-menu"
+  class="text-slate-200 bg-indigo-500 p-2 rounded-full ml-4"
+>
+  <i class="fas fa-times text-lg"></i>
+</button>
+
         </div>
 
         <div class="flex flex-col space-y-2">
@@ -218,11 +220,11 @@
           <input
             type="text"
             id="search-input"
-            placeholder="Search for glasses, sunglasses, frames..."
+            placeholder="Search..."
             class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
           <button
-            class="absolute right-2 top-2 bg-indigo-500 text-white p-2 rounded-lg"
+            class="absolute right-2 top-1 bg-indigo-500 text-white p-2 rounded-lg pt-2"
           >
             <i class="fas fa-search"></i>
           </button>
@@ -345,9 +347,9 @@
       <section class="hero-section py-20 md:py-32 text-white">
         <div class="container mx-auto px-4 text-center">
           <h1 class="text-4xl md:text-6xl font-bold mb-6 heading-font">
-            See the World Clearly with Our Premium Glasses
+            See Clearly, Look Stylish
           </h1>
-          <p class="text-xl md:text-2xl mb-10 max-w-2xl mx-auto">
+          <p class="text-xl md:text-1xl mb-10 max-w-2xl mx-auto">
             Discover stylish, affordable, and durable eyewear that enhances your
             vision and complements your style
           </p>
@@ -667,7 +669,7 @@
             <div class="md:w-1/2 mb-10 md:mb-0 animate-float">
               <div class="gradient-border p-1 rounded-xl max-w-[550px]">
                 <img
-                  src="assets/sikandar-azam.jpg"
+                  src="assets/hero/sikandar-azam.jpg"
                   alt="CareyeOptical glasses store interior"
                   class="rounded-xl w-full h-auto object-cover"
                 />
@@ -771,8 +773,8 @@
                     class="w-12 h-12 rounded-full bg-slate-700 mr-4 overflow-hidden"
                   >
                     <img
-                      src="https://randomuser.me/api/portraits/women/65.jpg"
-                      alt="Sarah Johnson"
+                      src="assets/testinomial/alexa.png"
+                      alt="alexa"
                     />
                   </div>
                   <div>
@@ -807,8 +809,8 @@
                     class="w-12 h-12 rounded-full bg-slate-700 mr-4 overflow-hidden"
                   >
                     <img
-                      src="https://randomuser.me/api/portraits/men/32.jpg"
-                      alt="Michael Chen"
+                      src="assets/testinomial/jacky.png"
+                      alt="jacky"
                     />
                   </div>
                   <div>
@@ -843,8 +845,8 @@
                     class="w-12 h-12 rounded-full bg-slate-700 mr-4 overflow-hidden"
                   >
                     <img
-                      src="https://randomuser.me/api/portraits/women/44.jpg"
-                      alt="Emily Rodriguez"
+                      src="assets/testinomial/saami.png"
+                      alt="saami"
                     />
                   </div>
                   <div>
@@ -932,44 +934,52 @@
                 <h3 class="text-2xl font-semibold text-slate-100 mb-6">
                   Send Us a Message
                 </h3>
-                <form id="contact-form">
-                  <div class="mb-4">
-                    <label for="name" class="block text-slate-300 mb-2"
-                      >Full Name</label
-                    >
-                    <input
-                      type="text"
-                      id="name"
-                      class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    />
-                  </div>
-                  <div class="mb-4">
-                    <label for="email" class="block text-slate-300 mb-2"
-                      >Email Address</label
-                    >
-                    <input
-                      type="email"
-                      id="email"
-                      class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    />
-                  </div>
-                  <div class="mb-4">
-                    <label for="message" class="block text-slate-300 mb-2"
-                      >Message</label
-                    >
-                    <textarea
-                      id="message"
-                      rows="5"
-                      class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    ></textarea>
-                  </div>
-                  <button
-                    type="submit"
-                    class="bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold px-6 py-3 rounded-lg btn-glow w-full"
-                  >
-                    Send Message <i class="fas fa-paper-plane ml-2"></i>
-                  </button>
-                </form>
+                <form id="contact-form" class="max-w-xl mx-auto p-6 bg-slate-900 rounded-xl shadow-lg">
+  <div class="mb-4">
+    <label for="name" class="block text-slate-300 mb-2 font-medium">Full Name</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      required
+      class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      placeholder="Your full name"
+    />
+  </div>
+
+  <div class="mb-4">
+    <label for="email" class="block text-slate-300 mb-2 font-medium">Email Address</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+      class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      placeholder="your.email@example.com"
+    />
+  </div>
+
+  <div class="mb-4">
+    <label for="message" class="block text-slate-300 mb-2 font-medium">Message</label>
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      required
+      class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      placeholder="Type your message here..."
+    ></textarea>
+  </div>
+
+  <button
+    type="submit"
+    class="bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold px-6 py-3 rounded-lg btn-glow w-full flex items-center justify-center"
+  >
+    Send Message
+    <i class="fas fa-paper-plane ml-2"></i>
+  </button>
+</form>
+
               </div>
             </div>
           </div>
@@ -998,7 +1008,7 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <h3 class="text-xl font-bold mb-6 heading-font">
-              Vision<span class="text-indigo-400">Craft</span>
+              Careye<span class="text-indigo-400">Optical</span>
             </h3>
             <p class="text-slate-400 mb-4">
               Premium optical shop offering designer eyewear, prescription
@@ -1014,7 +1024,7 @@
               <a href="#" class="text-slate-400 hover:text-indigo-400"
                 ><i class="fab fa-twitter"></i
               ></a>
-              <a href="#" class="text-slate-400 hover:text-indigo-400"
+              <a href="https://wa.me/9779840581455" class="text-slate-400 hover:text-indigo-400"
                 ><i class="fab fa-whatsapp"></i
               ></a>
             </div>
